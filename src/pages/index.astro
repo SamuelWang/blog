@@ -1,7 +1,9 @@
----
-import SiteLayout from '../layouts/SiteLayout.astro';
----
+<script>
+let userLang = navigator.language?.toLowerCase() || 'en';
 
-<SiteLayout>
-  <h1>Samuel Wang</h1>
-</SiteLayout>
+if (userLang.startsWith('en')) {
+  userLang = 'en';
+}
+
+window.location.href = `/${userLang}/`;
+</script>
