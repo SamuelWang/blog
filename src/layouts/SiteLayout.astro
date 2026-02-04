@@ -1,0 +1,25 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link rel='icon' href='/favicon.ico' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Samuel Wang</title>
+  </head>
+  <body class='bg-neutral-primary'>
+    <Header />
+    <main class='max-w-7xl mx-auto min-h-[calc(100vh-70px)] py-4 pt-20'>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<script is:inline src='https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js'></script>
