@@ -12,8 +12,8 @@ const rootPath = `/${currentLocale}/`;
 const isArticlesPage = currentUrl.pathname.startsWith(`/${currentLocale}/articles`);
 const isAboutPage = currentUrl.pathname.startsWith(`/${currentLocale}/about`);
 const navLinks: NavLink[] = [
-  { href: `${rootPath}articles`, label: 'Articles', isActive: isArticlesPage },
-  { href: `${rootPath}about`, label: 'About', isActive: isAboutPage },
+  { href: `${rootPath}articles`, label: currentLocale === 'en' ? 'Articles' : '文章列表', isActive: isArticlesPage },
+  { href: `${rootPath}about`, label: currentLocale === 'en' ? 'About' : '關於我', isActive: isAboutPage },
 ];
 ---
 
