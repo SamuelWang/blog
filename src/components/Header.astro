@@ -1,7 +1,20 @@
 ---
+interface NavLink {
+  href: string;
+  label: string;
+  isActive: boolean;
+}
+
 const siteName = 'Samuel Wang';
 const currentLocale = Astro.currentLocale || 'en';
+const currentUrl = Astro.url;
 const rootPath = `/${currentLocale}/`;
+const isArticlesPage = currentUrl.pathname.startsWith(`/${currentLocale}/articles`);
+const isAboutPage = currentUrl.pathname.startsWith(`/${currentLocale}/about`);
+const navLinks: NavLink[] = [
+  { href: `${rootPath}articles`, label: 'Articles', isActive: isArticlesPage },
+  { href: `${rootPath}about`, label: 'About', isActive: isAboutPage },
+];
 ---
 
 <nav class='bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default'>
@@ -32,20 +45,30 @@ const rootPath = `/${currentLocale}/`;
       <ul
         class='font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary'
       >
-        <li>
-          <a
-            href={`${rootPath}articles`}
-            class='block py-2 px-3 text-white bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0'
-            aria-current='page'>Articles</a
-          >
-        </li>
-        <li>
-          <a
-            href={`${rootPath}about`}
-            class='block py-2 px-3 text-white bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0'
-            aria-current='page'>About</a
-          >
-        </li>
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class='block py-2 px-3 rounded md:p-0'
+                class:list={
+                  link.isActive
+                    ? ['text-white', 'bg-brand', 'md:bg-transparent', 'md:text-fg-brand']
+                    : [
+                        'text-heading',
+                        'hover:bg-neutral-tertiary',
+                        'md:hover:bg-transparent',
+                        'md:hover:text-fg-brand',
+                        'md:dark:hover:bg-transparent',
+                      ]
+                }
+                aria-current='page'
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>
