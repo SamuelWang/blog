@@ -1,0 +1,18 @@
+---
+const formatDate = (date: Date) => new Intl.DateTimeFormat(currentLocale).format(date);
+
+const currentLocale = Astro.currentLocale || 'en';
+const { article } = Astro.props;
+---
+
+<li class='py-4 sm:py-4 first:pt-0 last:pb-0'>
+  <a href={`/${currentLocale}/articles/${article.id}`}>
+    <p class='font-medium text-fg-brand hover:underline truncate' title={article.data.title}>
+      {article.data.title}
+    </p>
+    <p class='text-sm text-body truncate' title={article.data.description}>
+      {article.data.description}
+    </p>
+    <p class='text-sm text-body-subtle'>{article.data.author}, {formatDate(article.data.releaseDate)}</p>
+  </a>
+</li>
