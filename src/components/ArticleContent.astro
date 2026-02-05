@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import { formatDate } from '../utils/date';
+
+interface Props {
+  article: CollectionEntry<'articlesEn' | 'articlesZhTw'>;
+}
+
+const currentLocale = Astro.currentLocale || 'en';
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+
+<div class='article-content'>
+  <h1>{article.data.title}</h1>
+  <p>{article.data.author}&nbsp;·&nbsp;{formatDate(article.data.releaseDate, currentLocale)}</p>
+  <div class='flex flex-wrap items-center gap-2'>
+    {
+      article.data.tags.map((tag) => (
+        <span class='inline-flex items-center px-2 py-1 ring-1 ring-inset ring-brand-subtle text-fg-brand-strong text-sm font-medium rounded bg-brand-softer'>{tag}</span>
+      ))
+    }
+  </div>
+  <hr class='hr-1' />
+  <Content />
+</div>

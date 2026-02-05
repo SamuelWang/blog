@@ -1,5 +1,5 @@
 ---
-const formatDate = (date: Date) => new Intl.DateTimeFormat(currentLocale).format(date);
+import { formatDate } from '../utils/date';
 
 const currentLocale = Astro.currentLocale || 'en';
 const { article } = Astro.props;
@@ -13,6 +13,6 @@ const { article } = Astro.props;
     <p class='text-sm text-body truncate' title={article.data.description}>
       {article.data.description}
     </p>
-    <p class='text-sm text-body-subtle'>{article.data.author}, {formatDate(article.data.releaseDate)}</p>
+    <p class='text-sm text-body-subtle'>{formatDate(article.data.releaseDate, currentLocale)}</p>
   </a>
 </li>

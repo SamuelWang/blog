@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleContent from '../../../components/ArticleContent.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articlesZhTw');
+  return articles.map((article) => ({
+    params: { id: article.id },
+    props: { article: article },
+  }));
+}
+
+const { article } = Astro.props;
+---
+
+<SiteLayout>
+  <ArticleContent article={article} />
+</SiteLayout>
