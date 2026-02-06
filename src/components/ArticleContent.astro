@@ -25,3 +25,14 @@ const { Content } = await render(article);
   <hr class='hr-1' />
   <Content />
 </div>
+
+<script lang="ts">
+  // Open external links in a new tab
+  const links = document.querySelectorAll('.article-content a');
+  links.forEach((link) => {
+    if (link.hostname !== window.location.hostname) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+</script>
