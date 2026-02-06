@@ -10,7 +10,7 @@ const articles = (await getCollection('articlesZhTw'))
 ---
 
 <SiteLayout>
-  <h2 class='text-4xl font-bold text-neutral-700 mb-4'>文章列表</h2>
+  <h2 class='text-4xl font-bold text-neutral-700 mb-4 dark:text-neutral-100'>文章列表</h2>
   <ul role='list' class='divide-y divide-default'>
     {articles.map((article) => <ArticleListItem article={article} />)}
   </ul>

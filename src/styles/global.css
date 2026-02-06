@@ -17,29 +17,31 @@
   --font-sans: 'Roboto', 'sans-serif';
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .article-content {
   h1 {
     @apply text-4xl font-bold text-heading mt-6 mb-4;
   }
 
   h2 {
-    @apply text-4xl font-bold text-neutral-700 mt-6 mb-4;
+    @apply text-4xl font-bold text-neutral-700 mt-6 mb-4 dark:text-neutral-100;
   }
 
   h3 {
-    @apply text-3xl font-bold text-neutral-500 mt-5 mb-4;
+    @apply text-3xl font-bold text-neutral-500 mt-5 mb-4 dark:text-neutral-200;
   }
 
   h4 {
-    @apply text-2xl font-bold text-neutral-400 mt-5 mb-3;
+    @apply text-2xl font-bold text-neutral-400 mt-5 mb-3 dark:text-neutral-300;
   }
 
   h5 {
-    @apply text-xl font-bold text-neutral-400 mt-5 mb-3;
+    @apply text-xl font-bold text-neutral-400 mt-5 mb-3 dark:text-neutral-300;
   }
 
   h6 {
-    @apply text-lg font-bold text-neutral-400 mt-5 mb-3;
+    @apply text-lg font-bold text-neutral-400 mt-5 mb-3 dark:text-neutral-300;
   }
 
   p {
