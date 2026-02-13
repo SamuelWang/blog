@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const isProduction = import.meta.env.PROD;
+const { title } = Astro.props;
 ---
 
 <html lang='en'>
@@ -13,7 +14,7 @@ const isProduction = import.meta.env.PROD;
     <link rel='icon' href='/favicon.ico' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta name='generator' content={Astro.generator} />
-    <title>Samuel Wang</title>
+    <title>{title ? `${title} | Samuel Wang` : 'Samuel Wang'}</title>
   </head>
   <body class='bg-neutral-primary'>
     <Header />
