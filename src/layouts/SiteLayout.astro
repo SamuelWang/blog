@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+const isProduction = import.meta.env.PROD;
 ---
 
 <html lang='en'>
@@ -27,23 +29,29 @@ import Footer from '../components/Footer.astro';
 
 <script is:inline src='https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js'></script>
 
-<script>
-  // Import the functions from the SDKs
-  import { initializeApp } from 'firebase/app';
-  import { getAnalytics } from 'firebase/analytics';
+{
+  isProduction && (
+    <>
+      <script>
+        // Import the functions from the SDKs
+        import { initializeApp } from 'firebase/app';
+        import { getAnalytics } from 'firebase/analytics';
 
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: 'AIzaSyDitIZmbAEq-IRrxfqFfnJL0ndmy4fARno',
-    authDomain: 'samuel-wang-s-blog.firebaseapp.com',
-    projectId: 'samuel-wang-s-blog',
-    storageBucket: 'samuel-wang-s-blog.firebasestorage.app',
-    messagingSenderId: '759696888126',
-    appId: '1:759696888126:web:be10b384e8ceaaf22c1c6f',
-    measurementId: 'G-YQHJZVVGVD',
-  };
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: 'AIzaSyDitIZmbAEq-IRrxfqFfnJL0ndmy4fARno',
+          authDomain: 'samuel-wang-s-blog.firebaseapp.com',
+          projectId: 'samuel-wang-s-blog',
+          storageBucket: 'samuel-wang-s-blog.firebasestorage.app',
+          messagingSenderId: '759696888126',
+          appId: '1:759696888126:web:be10b384e8ceaaf22c1c6f',
+          measurementId: 'G-YQHJZVVGVD',
+        };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+    </>
+  )
+}
