@@ -48,6 +48,25 @@ pnpm preview
 
 ## Writing articles
 
+### Generating article templates
+
+Use the `generate-article.sh` script to quickly create empty article files with the proper schema:
+
+```bash
+chmod +x ./scripts/generate-article.sh
+./scripts/generate-article.sh [LANGUAGE]
+```
+
+Options:
+- `./scripts/generate-article.sh en` — Generate English article only
+- `./scripts/generate-article.sh zh-tw` — Generate Traditional Chinese article only
+- `./scripts/generate-article.sh both` — Generate both language articles
+- `./scripts/generate-article.sh` — Defaults to both languages
+
+The script automatically creates files with timestamp-based IDs (format: `yyyyMMddHHMMSS`) and includes all required frontmatter fields.
+
+### Manual article creation
+
 - Add a new markdown file under `src/data/articles/<locale>/` (e.g., `src/data/articles/en/20260501001.md`).
 - Frontmatter metadata (title, date, description, tags, etc.) is used by the site — follow existing files as examples.
 - Put images for an article under `public/images/articles/<article-id>/` and reference them from the markdown or components.
